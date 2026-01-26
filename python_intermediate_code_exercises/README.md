@@ -1,10 +1,10 @@
-# Python Works
+﻿# Python Intermediate Code Exercises
 
-A repository dedicated to Python exercises and coding challenges designed to deepen my understanding of Python concepts and accelerate my skill development.
+Exercises from the MoureDev Pro course "Python Intermedio".
 
 ## Purpose
 
-This repository serves as a learning hub where I practice various Python programming concepts including:
+This folder contains practical exercises to reinforce intermediate Python concepts, including:
 
 - Date and time manipulation
 - List comprehensions and data structures
@@ -17,13 +17,13 @@ This repository serves as a learning hub where I practice various Python program
 
 ## Structure
 
-Each file in this repository focuses on specific Python topics and concepts, containing practical exercises and implementations to reinforce learning.
+Each file focuses on a specific topic, with small, runnable examples.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.7+
+- Python 3.8+
 - pip (Python package manager)
 
 ### Installation
@@ -41,8 +41,9 @@ python -m venv .venv
 source .venv/bin/activate  # On macOS/Linux
 ```
 
-3. Install dependencies (if needed):
+3. Install dependencies for this folder:
 ```bash
+cd python_intermediate_code_exercises
 pip install -r requirements.txt
 ```
 
@@ -55,6 +56,14 @@ python 00_dates.py
 python 08_package_manager.py
 ```
 
+## Dependencies by file
+
+Most files use only the Python standard library. The only external dependencies are used in:
+
+- `08_package_manager.py`: requires `numpy`, `pandas`, and `requests`
+
+If you run `pip install -r requirements.txt`, you can execute all files in this folder.
+
 ## Learning Goals
 
 - Strengthen core Python fundamentals
@@ -64,7 +73,8 @@ python 08_package_manager.py
 
 ## Notes
 
-These exercises are part of my continuous learning journey in Python development with MoureDev Pro. Feel free to explore, learn, and provide feedback!
+These exercises are part of the MoureDev Pro "Python Intermedio" course:
+https://campus.mouredev.pro/courses/python-intermedio
 
 ---
 
