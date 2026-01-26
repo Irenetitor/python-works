@@ -45,7 +45,7 @@ source .venv/bin/activate  # On macOS/Linux
 
 3. Install dependencies for this folder:
 ```bash
-cd python_intermediate_code_exercises
+cd Python-intermediate-code-exercises
 pip install -r requirements.txt
 ```
 
