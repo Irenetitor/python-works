@@ -19,6 +19,8 @@ This folder contains practical exercises to reinforce intermediate Python concep
 
 Each file focuses on a specific topic, with small, runnable examples.
 
+The `resources/` folder contains downloaded course files used as questions and templates for exercises.
+
 ## Getting Started
 
 ### Prerequisites
