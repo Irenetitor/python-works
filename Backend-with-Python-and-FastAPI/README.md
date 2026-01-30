@@ -1,4 +1,4 @@
-﻿# Backend with Python and FastAPI
+# Backend with Python and FastAPI
 
 Exercises and examples from the MoureDev Pro course "Backend Python".
 
@@ -8,14 +8,16 @@ This folder contains a simple FastAPI backend used to learn:
 
 - API routing and request handling
 - Pydantic models and validation
-- Authentication flows (basic + JWT)
+- Authentication flows (basic token + JWT)
+- MongoDB integration
 - Static files
 - Project structure for small APIs
 
 ## Structure
 
-- `main.py`: FastAPI app entry point
-- `routers/`: API route modules
+- `main.py`: FastAPI app entry point and router registration
+- `routers/`: API route modules (products, users, auth, MongoDB users)
+- `db/`: MongoDB client, models, and schema helpers
 - `static/`: static assets (served by the app)
 - `resources/`: downloaded course files used as references/templates
 
@@ -25,6 +27,7 @@ This folder contains a simple FastAPI backend used to learn:
 
 - Python 3.8+
 - pip (Python package manager)
+- MongoDB running locally (for `/userdb` endpoints)
 
 ### Installation
 
@@ -48,11 +51,51 @@ Open the interactive docs:
 - Swagger UI: `http://127.0.0.1:8000/docs`
 - ReDoc: `http://127.0.0.1:8000/redoc`
 
-Basic endpoints:
+## Routes
+
+Core:
 
 - `GET /` returns a hello message
 - `GET /url` returns a sample URL
 - `GET /static/...` serves files from `static/`
+
+Products:
+
+- `GET /products` list products
+- `GET /products/{id}` get product by index
+
+Users (in-memory):
+
+- `GET /users` list users
+- `GET /users/usersjson` list users as plain JSON
+- `GET /users/user/{id}` get user by id (path)
+- `GET /users/usersquery/?id=...` get user by id (query)
+- `POST /users/user` create user
+- `PUT /users/user` update user
+- `DELETE /users/user/{id}` delete user
+
+Auth (simple token):
+
+- `POST /auth_users/login` returns a bearer token (the username)
+- `GET /auth_users/me` returns the current user (requires token)
+
+Auth (JWT):
+
+- `POST /jwtauth/login` returns a JWT bearer token
+- `GET /jwtauth/users/me` returns the current user (requires JWT)
+
+Users (MongoDB):
+
+- `GET /userdb` list users
+- `GET /userdb/byquery?id=...|username=...|email=...` find by query
+- `GET /userdb/{id}` get user by id
+- `POST /userdb` create user
+- `PUT /userdb` update user
+- `DELETE /userdb/{id}` delete user
+
+## MongoDB Notes
+
+The app uses a local MongoDB database by default (`MongoClient().local`). To use a remote cluster, update `db/client.py` with your connection string.
 
 ## Dependencies
 
@@ -60,10 +103,11 @@ Key dependencies used in this project:
 
 - `fastapi`
 - `uvicorn`
+- `pydantic`
+- `pymongo`
 - `python-jose`
-- `passlib[bcrypt]`
+- `passlib`
 - `python-multipart`
-- `bcrypt<4.0.0`
 
 ## Notes
 
