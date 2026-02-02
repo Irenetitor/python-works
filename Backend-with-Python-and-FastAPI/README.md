@@ -27,7 +27,7 @@ This folder contains a simple FastAPI backend used to learn:
 
 - Python 3.8+
 - pip (Python package manager)
-- MongoDB running locally (for `/userdb` endpoints)
+- MongoDB connection string available via `MONGO_URI` (Atlas or local)
 
 ### Installation
 
@@ -95,7 +95,27 @@ Users (MongoDB):
 
 ## MongoDB Notes
 
-The app uses a local MongoDB database by default (`MongoClient().local`). To use a remote cluster, update `db/client.py` with your connection string.
+The app reads the connection string from the `MONGO_URI` environment variable and writes to the `test` database.
+
+Example (PowerShell):
+
+```powershell
+$env:MONGO_URI="mongodb+srv://<user>:<pass>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority"
+python -m uvicorn main:app --reload
+```
+
+Example (macOS/Linux):
+
+```bash
+export MONGO_URI="mongodb+srv://<user>:<pass>@cluster0.xxxxx.mongodb.net/?retryWrites=true&w=majority"
+python -m uvicorn main:app --reload
+```
+
+If `MONGO_URI` is not set, the app will not be able to connect.
+
+## Deployment (Vercel)
+
+This project is deployed on Vercel using `vercel.json`. Set the `MONGO_URI` environment variable in your Vercel project settings before deploying.
 
 ## Dependencies
 
@@ -116,4 +136,4 @@ https://campus.mouredev.pro/courses/backend-python
 
 ---
 
-Happy coding!
+Happy coding! 🐍

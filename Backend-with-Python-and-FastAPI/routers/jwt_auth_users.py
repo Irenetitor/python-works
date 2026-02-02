@@ -12,6 +12,8 @@ SECRET = "b0e5072fee967ff3ead55bd36927ed384c2d88355fdc5fb6ca053e39f077725d"
 
 router = APIRouter(prefix="/jwtauth", tags=["jwtauth"], responses={404: {"message": "Not found"}})
 
+router = APIRouter(prefix="/basicauth", tags=["basicauth"], responses={404: {"message": "Not found"}})
+
 oauth2 = OAuth2PasswordBearer(tokenUrl="login")
 
 crypt = CryptContext(schemes=["bcrypt"])
